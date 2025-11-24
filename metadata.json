@@ -1,0 +1,5 @@
+{
+  "name": "LocalBookr Growth AI",
+  "description": "LocalBookr Growth AI: A multi-agent system for local businesses to understand leads, use tools, generate replies, and plan follow-ups using Gemini API with Function Calling.",
+  "requestFramePermissions": []
+}
