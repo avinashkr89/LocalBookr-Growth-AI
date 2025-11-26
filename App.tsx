@@ -33,9 +33,16 @@ export default function App() {
   const [isApiKeySet, setIsApiKeySet] = useState(false);
 
   useEffect(() => {
-    if (process.env.API_KEY) {
-      setIsApiKeySet(true);
+    let keyExists = false;
+    try {
+      if (process.env.API_KEY) {
+        keyExists = true;
+      }
+    } catch (e) {
+      // Process is not defined, ignore
+      console.warn("process.env not accessible");
     }
+    setIsApiKeySet(keyExists);
   }, []);
 
   const handleAddLead = async (e?: React.FormEvent) => {

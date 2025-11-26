@@ -225,7 +225,13 @@ export const processLeadWithGemini = async (
   time_since_last_reply_hours: number = 0,
   previous_summary: string = ""
 ): Promise<PipelineResult> => {
-  const apiKey = process.env.API_KEY;
+  let apiKey: string | undefined;
+  try {
+    apiKey = process.env.API_KEY;
+  } catch (e) {
+    console.error("Failed to access API Key from process.env", e);
+  }
+
   if (!apiKey) {
     throw new Error("API Key is missing. Please check your metadata.json or environment configuration.");
   }
